@@ -1,0 +1,6 @@
+$(OBJECTS_DIR)/myLibTest.C.dep: \
+myLibTest.C \
+../src/lnInclude/myLib.H \
+
+../src/lnInclude/myLib.H :
+

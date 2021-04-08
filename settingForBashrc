@@ -1,0 +1,9 @@
+# OpenFOAM User Directory
+export MY_FOAM_APPBIN=/home/user/Desktop/OFSolvers/APP
+export MY_FOAM_LIBBIN=/home/user/Desktop/OFSolvers/LIB
+
+# setting environment
+export PATH=$MY_FOAM_APPBIN:$MY_FOAM_LIBBIN:$PATH
+
+# setting dynamic library
+export LD_LIBRARY_PATH=/home/user/Desktop/OFSolvers/LIB:$LD_LIBRARY_PATH

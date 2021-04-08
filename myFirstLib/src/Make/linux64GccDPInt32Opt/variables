@@ -1,0 +1,1 @@
+LIB = $(MY_FOAM_LIBBIN)/libmyLib

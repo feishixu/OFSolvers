@@ -1,0 +1,6 @@
+$(OBJECTS_DIR)/myLib.C.dep: \
+myLib.C \
+myLib.H \
+
+myLib.H :
+
