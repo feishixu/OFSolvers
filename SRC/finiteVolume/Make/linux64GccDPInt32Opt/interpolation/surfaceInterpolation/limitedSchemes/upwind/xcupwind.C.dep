@@ -1,0 +1,6 @@
+$(OBJECTS_DIR)/interpolation/surfaceInterpolation/limitedSchemes/upwind/xcupwind.C.dep: \
+interpolation/surfaceInterpolation/limitedSchemes/upwind/xcupwind.C \
+lnInclude/xcupwind.H \
+
+lnInclude/xcupwind.H :
+

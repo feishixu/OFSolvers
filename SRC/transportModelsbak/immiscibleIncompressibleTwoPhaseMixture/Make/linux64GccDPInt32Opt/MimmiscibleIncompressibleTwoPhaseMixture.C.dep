@@ -1,0 +1,6 @@
+$(OBJECTS_DIR)/MimmiscibleIncompressibleTwoPhaseMixture.C.dep: \
+MimmiscibleIncompressibleTwoPhaseMixture.C \
+MimmiscibleIncompressibleTwoPhaseMixture.H \
+
+MimmiscibleIncompressibleTwoPhaseMixture.H :
+

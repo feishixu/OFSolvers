@@ -1,0 +1,3 @@
+SOURCE = \
+alphaContactAngle/alphaContactAngle/MalphaContactAngleFvPatchScalarField.C \
+alphaContactAngle/dynamicAlphaContactAngle/MdynamicAlphaContactAngleFvPatchScalarField.C 

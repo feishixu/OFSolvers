@@ -1,0 +1,4 @@
+alphaContactAngle/alphaContactAngle/MalphaContactAngleFvPatchScalarField.C
+alphaContactAngle/dynamicAlphaContactAngle/MdynamicAlphaContactAngleFvPatchScalarField.C
+
+LIB = $(FOAM_USER_LIBBIN)/libxctwoPhaseProperties
