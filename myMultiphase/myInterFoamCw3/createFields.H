@@ -169,17 +169,17 @@ dimensionedScalar S0
 );
 */
 
-dimensionedScalar Diff_l
+dimensionedScalar D1
 (
-	transportProperties.lookup("Diff_l")
+	transportProperties.lookup("D1")
 );
 
-dimensionedScalar Diff_g
+dimensionedScalar D2
 (
-	transportProperties.lookup("Diff_g")
+	transportProperties.lookup("D2")
 );
 
-volScalarField Diff ("Diff", Diff_l * alpha1 + Diff_g * (1-alpha1));
+volScalarField D ("D", D1 * alpha1 + D2 * (1-alpha1));
 
 
 

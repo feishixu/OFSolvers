@@ -1,5 +1,7 @@
 // - C field
-Diff = Diff_l* alpha1 + Diff_g *(1. - alpha1);
+//D = D1* alpha1 + D2 *(1. - alpha1);
+
+D = D1 * D2 / (alpha1 * D2+ (1 - alpha1) * D1);
 
 /*
 volScalarField phiH
@@ -12,7 +14,7 @@ volScalarField phiH
 volScalarField phiH
 (
 	"phiH",
-	Diff*(1.-H)/(alpha1 + H*(1.-alpha1))
+	D*(1.-H)/(alpha1 + H*(1.-alpha1))
 	//rho*Diff*(H-1.)/((1.-alpha2) + H*alpha2)
 );
 
@@ -35,7 +37,7 @@ fvScalarMatrix CEqn
 			  fvm::ddt(C)
 			+ fvm::div(phi, C)
 			==
-			  fvm::laplacian(Diff, C)
+			  fvm::laplacian(D, C)
 			- fvm::div(phiHf, C)
 
 /*

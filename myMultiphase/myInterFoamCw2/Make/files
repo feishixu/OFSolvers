@@ -1,3 +1,0 @@
-myInterFoamCw2.C
-
-EXE = $(MY_FOAM_APPBIN)/myInterFoamCw2

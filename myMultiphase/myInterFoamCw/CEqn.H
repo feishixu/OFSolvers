@@ -1,19 +1,21 @@
 // - C field
-Diff = Diff_l* alpha1 + Diff_g *(1. - alpha1);
+D = D1* alpha1 + D2 *(1. - alpha1);
+
+//D = D1 * D2 / (alpha1 * D1+ (1 - alpha1) * D2);
 
 volScalarField phiH
 (
 	"phiH",
-	alpha1 * Diff_l * Diff_g / (alpha1 * Diff_g + (1 - alpha1) * Diff_l) * (1 - H) / (alpha1 * H + (1 - alpha1))
+	 C * D * (1 - H) / (alpha1 + H*(1 - alpha1))
 );
 
 fvScalarMatrix CEqn
 (
 			  fvm::ddt(C)
 			+ fvm::div(phi, C)
-			- fvm::laplacian(Diff, C)
+			- fvm::laplacian(D, C)
 			==
-			  fvc::laplacian(phiH, C)
+			  fvc::laplacian(phiH, alpha1)
 );
 
 CEqn.solve();
