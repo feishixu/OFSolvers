@@ -1,0 +1,18 @@
+1. 添加OpenFOAM源
+sudo add-apt-repository http://dl.openfoam.org/ubuntu
+
+2. 添加库的密钥文件(gpg.key)
+sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
+
+3. 更新软件为最新版本
+sudo apt-get update
+
+4.安装OpenFOAM-7和ParaView5.6.0
+sudo apt-get -y install openfoam7
+
+5. 添加环境变量
+echo 'source /opt/openfoam7/etc/bashrc' >> $HOME/.bashrc
+source $HOME/.bashrc
+
+6. 测试是否安装成功
+icoFoam -help
