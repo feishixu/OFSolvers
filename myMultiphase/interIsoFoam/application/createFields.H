@@ -32,7 +32,6 @@ volVectorField U
 
 
 Info<< "Reading transportProperties\n" << endl;
-
 immiscibleIncompressibleTwoPhaseMixture mixture(U, phi);
 
 volScalarField& alpha1(mixture.alpha1());
@@ -124,12 +123,7 @@ mesh.setFluxRequired(alpha1.name());
 
 #include "createMRF.H"
 #include "createFvOptions.H"
-
-
-
-
-// MULES correction
-tmp<surfaceScalarField> talphaPhiCorr0;
+#include "createIsoAdvection.H"
 
 Info<< "Reading concentration field C\n" << endl;
 volScalarField C
@@ -174,6 +168,8 @@ dimensionedScalar D2
 
 //volScalarField D ("D", D1* alpha1 + D2 *(1. - alpha1));
 volScalarField D ("D", D1 * D2 / (alpha1 * D2+ (1 - alpha1) * D1));
+
+
 
 
 
