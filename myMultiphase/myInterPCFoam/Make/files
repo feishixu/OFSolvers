@@ -1,0 +1,3 @@
+interPhaseChangeFoam.C
+
+EXE = $(MY_FOAM_APPBIN)/myInterPCFoam

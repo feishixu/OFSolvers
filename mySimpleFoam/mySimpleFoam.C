@@ -72,8 +72,8 @@ int main(int argc, char *argv[])
         {
             fvScalarMatrix CEqn
             (
-                fvm::ddt(C)
-              + fvm::div(phi, C)
+              //  fvm::ddt(C)
+                fvm::div(phi, C)
               - fvm::laplacian(DT, C)
              ==
                 fvOptions(C)
