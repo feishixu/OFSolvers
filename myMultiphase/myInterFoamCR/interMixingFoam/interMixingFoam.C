@@ -146,6 +146,8 @@ int main(int argc, char *argv[])
 
         #include "continuityErrs.H"
 
+        #include "CEqn.H"
+
         runTime.write();
 
         Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"

@@ -17,6 +17,7 @@
 
     for (int gCorr=0; gCorr<nAlphaCorr; gCorr++)
     {
+        #include "alphaSuSp.H"
         // Create the limiter to be used for all phase-fractions
         scalarField allLambda(mesh.nFaces(), 1.0);
 
@@ -171,12 +172,113 @@
             );
         }
 
+        // =========================================================
+
+        /* if (MULESCorr)
+        {
+            tmp<surfaceScalarField> talphaPhi1Corr(talphaPhi1Un() - alphaPhi10);
+            volScalarField alpha10("alpha10", alpha1);
+
+            MULES::correct
+            (
+                geometricOneField(),
+                alpha1,
+                talphaPhi1Un(),
+                talphaPhi1Corr.ref(),
+                Sp,
+                (-Sp*alpha1)(),
+                oneField(),
+                zeroField()
+            );
+
+            // Under-relax the correction for all but the 1st corrector
+            if (aCorr == 0)
+            {
+                alphaPhi10 += talphaPhi1Corr();
+            }
+            else
+            {
+                alpha1 = 0.5*alpha1 + 0.5*alpha10;
+                alphaPhi10 += 0.5*talphaPhi1Corr();
+            }
+        }
+        else
+        {
+            alphaPhi10 = talphaPhi1Un;
+
+            MULES::explicitSolve
+            (
+                geometricOneField(),
+                alpha1,
+                phiCN,
+                alphaPhi10,
+                Sp,
+                (Su + divU*min(alpha1(), scalar(1)))(),
+                oneField(),
+                zeroField()
+            );
+        } */
+
+            MULES::explicitSolve
+            (
+                geometricOneField(),
+                alpha1,
+                phi,
+                alphaPhi1,
+                Sp,
+                (Su1 + divU*min(alpha1(), scalar(1)))(),
+                oneField(),
+                zeroField()
+            );
+
+            MULES::explicitSolve
+            (
+                geometricOneField(),
+                alpha2,
+                phi,
+                alphaPhi1,
+                Sp,
+                (Su2 + divU*min(alpha1(), scalar(1)))(),
+                oneField(),
+                zeroField()
+            ); 
+
+        //Sp1 = spvalue/(alpha2+ SMALL);
+        //Sp2 = spvalue/(alpha2+ SMALL);
+
+        // Sp1 = spvalue;
+        // Sp2 = spvalue;
+
+
+
+        // Sp1 = (1.0 / rho1 *kC*C)/(rho1 + SMALL);
+        // Sp2 = (1.0 / rho2 *kC*C)/(alpha2 + SMALL); 
+
+        // Sp1 = (1.0 / rho1 *kC*C)/(rho1 + SMALL);
+        // Sp2 = (1.0 / rho2 *kC*C)/(rho2 + SMALL); 
+
+        //Su1 = 1.0 / rho1 *kC*C;
+        //Su2 = 1.0 / rho2 *kC*C;
+
+        // Sp3 = Sp1 * alpha2;
+        // Sp4 = Sp2 * alpha2;
+
+
+        // ===================================================================
+
         // Construct the limited fluxes
         alphaPhi1 = alphaPhi1BD + lambda*alphaPhi1;
         alphaPhi2 = alphaPhi2BD + lambda*alphaPhi2;
 
-        // Solve for alpha1
-        solve(fvm::ddt(alpha1) + fvc::div(alphaPhi1));
+        // Solve for alpha1 ==================================================================
+ 
+        solve(
+              fvm::ddt(alpha1) 
+            + fvc::div(alphaPhi1)
+            ==
+            - Su1
+            // - fvm::Sp(Sp1, 1-alpha1)
+            );
 
         // Create the diffusion coefficients for alpha2<->alpha3
         volScalarField Dc23(D23*max(alpha3, scalar(0))*pos0(alpha2));
@@ -185,12 +287,15 @@
         // Add the diffusive flux for alpha3->alpha2
         alphaPhi2 -= fvc::interpolate(Dc32)*mesh.magSf()*fvc::snGrad(alpha1);
 
-        // Solve for alpha2
+        // Solve for alpha2 ==================================================================
         fvScalarMatrix alpha2Eqn
         (
             fvm::ddt(alpha2)
           + fvc::div(alphaPhi2)
           - fvm::laplacian(Dc23 + Dc32, alpha2)
+          ==
+            Su2
+            // fvm::Sp(Sp2, alpha2)
         );
         alpha2Eqn.solve();
 

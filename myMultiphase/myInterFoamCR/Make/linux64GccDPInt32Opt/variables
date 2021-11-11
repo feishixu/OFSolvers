@@ -1,1 +1,1 @@
-EXE = $(MY_FOAM_APPBIN)/myInterFoamCR2
+EXE = $(MY_FOAM_APPBIN)/VScode_test

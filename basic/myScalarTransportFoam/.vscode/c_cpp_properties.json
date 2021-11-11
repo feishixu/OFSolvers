@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": [
+        "/opt/openfoam7/src/OSspecific/POSIX/lnInclude",
+        "/opt/openfoam7/src/OpenFOAM/lnInclude",
+        "/opt/openfoam7/src/finiteVolume/lnInclude",
+        "/opt/openfoam7/src/meshTools/lnInclude",
+        "/opt/openfoam7/src/sampling/lnInclude",
+        "./**"
+      ],
+      "defines": [],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu17",
+      "cppStandard": "gnu++14",
+      "intelliSenseMode": "linux-gcc-x64"
+    }
+  ],
+  "version": 4
+}

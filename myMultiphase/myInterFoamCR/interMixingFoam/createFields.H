@@ -126,3 +126,154 @@ mesh.setFluxRequired(alpha2.name());
 
 #include "createMRF.H"
 #include "createFvOptions.H"
+
+// Variable for species transport
+
+
+Info<< "Reading concentration field A,B and C\n" << endl;
+
+volScalarField A
+(
+	IOobject
+	(
+		"A",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE	
+	),
+	mesh
+);
+
+volScalarField B
+(
+	IOobject
+	(
+		"B",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE	
+	),
+	mesh
+);
+
+volScalarField C
+(
+	IOobject
+	(
+		"C",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE	
+	),
+	mesh
+);
+
+IOdictionary transportProperties
+(
+	IOobject
+	(
+		"transportProperties",
+		runTime.constant(),
+		mesh,
+		IOobject::MUST_READ_IF_MODIFIED,
+		IOobject::NO_WRITE
+	)
+);
+
+dimensionedScalar cflux
+(
+	transportProperties.lookup ("cflux")
+);
+
+dimensionedScalar H
+(
+	transportProperties.lookup("H")
+);
+
+dimensionedScalar Diff2
+(
+	transportProperties.lookup("Diff2")
+);
+
+dimensionedScalar Diff3
+(
+	transportProperties.lookup("Diff3")
+);
+
+dimensionedScalar kappa
+(
+	transportProperties.lookup("kappa")
+);
+
+dimensionedScalar kC
+(
+	transportProperties.lookup("kC")
+);
+
+dimensionedScalar spvalue
+(
+	transportProperties.lookup("spvalue")
+);
+
+volScalarField Diff ("Diff", Diff2* alpha2 + Diff3 *alpha3);
+
+// ==========================================
+
+    volScalarField Su1
+    (
+        IOobject
+        (
+            "Su1",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        //mesh
+        (0.0 / rho1 *kC*C)
+    );
+
+    volScalarField Su2
+    (
+        IOobject
+        (
+            "Su2",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        //mesh
+        (0.0 / rho2 *kC*C)
+    );
+
+/*     volScalarField Sp3
+    (
+        IOobject
+        (
+            "Sp3",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        (1.0 / rho1 *kC*C)/((1.0-alpha1) + SMALL)
+    );
+
+    volScalarField Sp4
+    (
+        IOobject
+        (
+            "Sp4",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        (1.0 / rho2 *kC*C)/(alpha2 + SMALL)
+    ); */
+
+
