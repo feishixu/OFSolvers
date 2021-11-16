@@ -9,6 +9,10 @@
         "interMixingFoam.C": "cpp",
         "myInterFoamCR.C": "cpp",
         "phaseChangeTwoPhaseMixture.C": "cpp",
-        "SchnerrSauer.C": "cpp"
+        "SchnerrSauer.C": "cpp",
+        "EHN.C": "cpp",
+        "newPhaseChangeTwoPhaseMixture.C": "cpp",
+        "interPhaseChangeFoam.C": "cpp",
+        "Merkle.C": "cpp"
     }
 }

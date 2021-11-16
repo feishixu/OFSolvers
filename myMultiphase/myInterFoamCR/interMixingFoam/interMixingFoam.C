@@ -146,7 +146,7 @@ int main(int argc, char *argv[])
 
         #include "continuityErrs.H"
 
-        #include "CEqn.H"
+        //#include "CEqn.H"
 
         runTime.write();
 

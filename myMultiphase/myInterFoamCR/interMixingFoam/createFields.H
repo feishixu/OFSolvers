@@ -188,9 +188,9 @@ dimensionedScalar cflux
 	transportProperties.lookup ("cflux")
 );
 
-dimensionedScalar H
+dimensionedScalar He
 (
-	transportProperties.lookup("H")
+	transportProperties.lookup("He")
 );
 
 dimensionedScalar Diff2
@@ -203,14 +203,14 @@ dimensionedScalar Diff3
 	transportProperties.lookup("Diff3")
 );
 
-dimensionedScalar kappa
+dimensionedScalar k_re
 (
-	transportProperties.lookup("kappa")
+	transportProperties.lookup("k_re")
 );
 
-dimensionedScalar kC
+dimensionedScalar k_pc
 (
-	transportProperties.lookup("kC")
+	transportProperties.lookup("k_pc")
 );
 
 dimensionedScalar spvalue
@@ -222,7 +222,7 @@ volScalarField Diff ("Diff", Diff2* alpha2 + Diff3 *alpha3);
 
 // ==========================================
 
-    volScalarField Su1
+/*     volScalarField Su1
     (
         IOobject
         (
@@ -248,7 +248,7 @@ volScalarField Diff ("Diff", Diff2* alpha2 + Diff3 *alpha3);
         ),
         //mesh
         (0.0 / rho2 *kC*C)
-    );
+    ); */
 
 /*     volScalarField Sp3
     (

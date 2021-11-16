@@ -184,37 +184,43 @@ IOdictionary transportProperties
 	)
 );
 
-dimensionedScalar cflux
+dimensionedScalar C_thr
 (
-	transportProperties.lookup ("cflux")
+	transportProperties.lookup ("C_thr")
 );
 
-dimensionedScalar H
+dimensionedScalar C_0
 (
-	transportProperties.lookup("H")
+	transportProperties.lookup ("C_0")
 );
 
-dimensionedScalar Diff_l
+
+dimensionedScalar He
 (
-	transportProperties.lookup("Diff_l")
+	transportProperties.lookup("He")
 );
 
-dimensionedScalar Diff_g
+dimensionedScalar Diff1
 (
-	transportProperties.lookup("Diff_g")
+	transportProperties.lookup("Diff1")
 );
 
-dimensionedScalar kappa
+dimensionedScalar Diff2
 (
-	transportProperties.lookup("kappa")
+	transportProperties.lookup("Diff2")
 );
 
-dimensionedScalar kC
+dimensionedScalar k_re
 (
-	transportProperties.lookup("kC")
+	transportProperties.lookup("k_re")
 );
 
-volScalarField Diff ("Diff", Diff_l* alpha1 + Diff_g *(1. - alpha1 ));
+dimensionedScalar k_pc
+(
+	transportProperties.lookup("k_pc")
+);
+
+volScalarField Diff ("Diff", Diff1* alpha1 + Diff2 *(1. - alpha1 ));
 
 
 

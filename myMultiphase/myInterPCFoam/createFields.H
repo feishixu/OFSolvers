@@ -110,3 +110,93 @@ mesh.setFluxRequired(p_rgh.name());
 mesh.setFluxRequired(alpha1.name());
 
 #include "createFvOptions.H"
+
+// ==========================================================================
+
+Info<< "Reading concentration field A,B and C\n" << endl;
+
+volScalarField A
+(
+	IOobject
+	(
+		"A",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE	
+	),
+	mesh
+);
+
+volScalarField B
+(
+	IOobject
+	(
+		"B",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE	
+	),
+	mesh
+);
+
+volScalarField C
+(
+	IOobject
+	(
+		"C",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE	
+	),
+	mesh
+);
+
+
+//=================================================================
+
+IOdictionary transportProperties
+(
+	IOobject
+	(
+		"transportProperties",
+		runTime.constant(),
+		mesh,
+		IOobject::MUST_READ_IF_MODIFIED,
+		IOobject::NO_WRITE
+	)
+);
+
+dimensionedScalar cflux
+(
+	transportProperties.lookup ("cflux")
+);
+
+dimensionedScalar He
+(
+	transportProperties.lookup("He")
+);
+
+dimensionedScalar Diff1
+(
+	transportProperties.lookup("Diff1")
+);
+
+dimensionedScalar Diff2
+(
+	transportProperties.lookup("Diff2")
+);
+
+dimensionedScalar k_re
+(
+	transportProperties.lookup("k_re")
+);
+
+dimensionedScalar k_pc
+(
+	transportProperties.lookup("k_pc")
+);
+
+volScalarField Diff ("Diff", Diff1* alpha1 + Diff2 *(1. - alpha1 ));

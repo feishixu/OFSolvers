@@ -159,6 +159,8 @@ int main(int argc, char *argv[])
             }
         }
 
+            #include "CEqn.H"    // Spiecies transport
+
         runTime.write();
 
         Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"

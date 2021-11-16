@@ -134,6 +134,8 @@ int main(int argc, char *argv[])
                 }
             }
 
+		    #include "CEqn.H"
+
             #include "alphaControls.H"
             #include "alphaEqnSubCycle.H"
 
@@ -153,7 +155,7 @@ int main(int argc, char *argv[])
             }
         }
 
-		#include "CEqn.H"
+
 
         runTime.write();
 

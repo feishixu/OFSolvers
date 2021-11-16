@@ -30,6 +30,7 @@ alphaControls.H \
 alphaEqnSubCycle.H \
 UEqn.H \
 pEqn.H \
+CEqn.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/parRun.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Time.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvMesh.H \
@@ -891,6 +892,7 @@ alphaControls.H :
 alphaEqnSubCycle.H :
 UEqn.H :
 pEqn.H :
+CEqn.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/parRun.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Time.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvMesh.H :

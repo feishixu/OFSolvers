@@ -40,9 +40,12 @@
 
     while (pimple.correctNonOrthogonal())
     {
+        //volScalarField C1 ("C1", alpha1*max(C_0,C-C_thr)+(1-alpha1)*min(C_0,C-C_thr));
         fvScalarMatrix p_rghEqn
         (
-            fvm::laplacian(rAUf, p_rgh) == fvc::div(phiHbyA) - kC*C*(1.0/rho1 - 1.0/rho2)
+            // fvm::laplacian(rAUf, p_rgh) == fvc::div(phiHbyA) - k_pc*C1*(1.0/rho1 - 1.0/rho2)    //myInterFoamCRnew
+            
+            fvm::laplacian(rAUf, p_rgh) == fvc::div(phiHbyA) - k_pc*alpha2*alpha3*(1.0/rho1 - 1.0/rho2)   //myInterMixingFoam
         );
 
         p_rghEqn.setReference(pRefCell, getRefCellValue(p_rgh, pRefCell));

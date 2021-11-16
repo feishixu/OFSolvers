@@ -225,8 +225,8 @@
                 alpha1,
                 phi,
                 alphaPhi1,
-                Sp,
-                (Su1 + divU*min(alpha1(), scalar(1)))(),
+                Sp1,
+                (Su + divU*min(alpha1(), scalar(1)))(),
                 oneField(),
                 zeroField()
             );
@@ -237,8 +237,8 @@
                 alpha2,
                 phi,
                 alphaPhi1,
-                Sp,
-                (Su2 + divU*min(alpha1(), scalar(1)))(),
+                Sp2,
+                (Su + divU*min(alpha1(), scalar(1)))(),
                 oneField(),
                 zeroField()
             ); 
@@ -276,8 +276,8 @@
               fvm::ddt(alpha1) 
             + fvc::div(alphaPhi1)
             ==
-            - Su1
-            // - fvm::Sp(Sp1, 1-alpha1)
+            //- Su1
+              fvm::Sp(Sp1, alpha1)
             );
 
         // Create the diffusion coefficients for alpha2<->alpha3
@@ -294,8 +294,8 @@
           + fvc::div(alphaPhi2)
           - fvm::laplacian(Dc23 + Dc32, alpha2)
           ==
-            Su2
-            // fvm::Sp(Sp2, alpha2)
+            // Su2
+            fvm::Sp(Sp2, alpha2)
         );
         alpha2Eqn.solve();
 

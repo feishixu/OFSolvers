@@ -31,11 +31,11 @@ $(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/readDyMControls.H \
 ../VoF/setDeltaT.H \
 correctPhi.H \
 $(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/meshCourantNo.H \
+CEqn.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/alphaControls.H \
 ../VoF/alphaEqnSubCycle.H \
 UEqn.H \
 pEqn.H \
-CEqn.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/parRun.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Time.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvMesh.H \
@@ -901,11 +901,11 @@ $(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/readDyMControls.H :
 ../VoF/setDeltaT.H :
 correctPhi.H :
 $(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/meshCourantNo.H :
+CEqn.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/alphaControls.H :
 ../VoF/alphaEqnSubCycle.H :
 UEqn.H :
 pEqn.H :
-CEqn.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/parRun.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Time.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvMesh.H :
