@@ -128,6 +128,9 @@ int main(int argc, char *argv[])
             #include "alphaControls.H"
             #include "alphaEqnSubCycle.H"
 
+            // #include "TEqn.H"
+            #include "CEqn.H"
+
             mixture.correct();
 
             #include "UEqn.H"
@@ -146,7 +149,7 @@ int main(int argc, char *argv[])
 
         #include "continuityErrs.H"
 
-        //#include "CEqn.H"
+
 
         runTime.write();
 

@@ -295,7 +295,7 @@
           - fvm::laplacian(Dc23 + Dc32, alpha2)
           ==
             // Su2
-            fvm::Sp(Sp2, alpha2)
+          - fvm::Sp(Sp2, alpha2)
         );
         alpha2Eqn.solve();
 

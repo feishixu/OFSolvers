@@ -134,6 +134,7 @@ int main(int argc, char *argv[])
                 }
             }
 
+            // #include "TEqn.H"
 		    #include "CEqn.H"
 
             #include "alphaControls.H"

@@ -2,6 +2,8 @@
 // Diff = Diff1 * alpha1 + Diff2 *(1. - alpha1);
 Diff = Diff1 * Diff2 / (alpha1*Diff2 + (1 - alpha1)*Diff1);
 
+k_re = k_re0; //* pow(T,beta);
+
 /* volScalarField phiH
 (
 	"phiH",

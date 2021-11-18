@@ -1,1 +1,1 @@
-EXE = $(MY_FOAM_APPBIN)/myInterFoamCRnew
+EXE = $(MY_FOAM_APPBIN)/EHNFoam

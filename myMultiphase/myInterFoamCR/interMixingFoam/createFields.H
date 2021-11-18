@@ -130,7 +130,7 @@ mesh.setFluxRequired(alpha2.name());
 // Variable for species transport
 
 
-Info<< "Reading concentration field A,B and C\n" << endl;
+/* Info<< "Reading concentration field A,B and C\n" << endl;
 
 volScalarField A
 (
@@ -169,7 +169,7 @@ volScalarField C
 		IOobject::AUTO_WRITE	
 	),
 	mesh
-);
+); */
 
 IOdictionary transportProperties
 (

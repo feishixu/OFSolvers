@@ -172,6 +172,33 @@ volScalarField C
 	mesh
 );
 
+/* volScalarField T
+(
+	IOobject
+	(
+		"T",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE	
+	),
+	mesh
+); */
+
+volScalarField k_re
+(
+	IOobject
+	(
+		"k_re",
+		runTime.timeName(),
+		mesh,
+		IOobject::NO_READ,
+		IOobject::AUTO_WRITE	
+	),
+    C.mesh(),
+	dimensionedScalar("k_re", dimensionSet(0, 3, -1, 0, -1, 0, 0), 0.0) // initial value will be overwritten in CEqn.H
+);
+
 IOdictionary transportProperties
 (
 	IOobject
@@ -184,6 +211,11 @@ IOdictionary transportProperties
 	)
 );
 
+dimensionedScalar DT
+(
+	transportProperties.lookup ("DT")
+);
+
 dimensionedScalar C_thr
 (
 	transportProperties.lookup ("C_thr")
@@ -193,7 +225,6 @@ dimensionedScalar C_0
 (
 	transportProperties.lookup ("C_0")
 );
-
 
 dimensionedScalar He
 (
@@ -210,14 +241,24 @@ dimensionedScalar Diff2
 	transportProperties.lookup("Diff2")
 );
 
-dimensionedScalar k_re
+dimensionedScalar k_re0
 (
-	transportProperties.lookup("k_re")
+	transportProperties.lookup("k_re0")
+);
+
+dimensionedScalar beta
+(
+	transportProperties.lookup("beta")
 );
 
 dimensionedScalar k_pc
 (
 	transportProperties.lookup("k_pc")
+);
+
+dimensionedScalar k_T
+(
+	transportProperties.lookup("k_T")
 );
 
 volScalarField Diff ("Diff", Diff1* alpha1 + Diff2 *(1. - alpha1 ));
